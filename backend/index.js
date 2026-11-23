@@ -159,6 +159,8 @@ app.get('/api/cau-hinh', (req, res) => {
     diaChi: process.env.CONTRACT_ADDRESS || null,
     rpcUrl: process.env.PUBLIC_RPC_URL || process.env.RPC_URL || null,
     explorerTx: process.env.EXPLORER_TX_URL || null,
+    chainId: Number(process.env.CHAIN_ID) || 31337,
+    tenMang: process.env.CHAIN_NAME || 'Hardhat Local',
   });
 });
 
@@ -244,5 +246,5 @@ app.get('/api/su-kien', async (req, res) => {
 app.listen(PORT, () => console.log(`API server đang chạy tại http://localhost:${PORT}`));
 
 docNguong();
-setInterval(docNguong, 30 * 1000);
+setInterval(docNguong, 10 * 1000);
 setInterval(() => gomLo().catch((err) => console.error('[chain] không neo được lô:', err.message)), BATCH_MS);
