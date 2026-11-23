@@ -6,6 +6,7 @@ import {
   Thermometer, Droplets, Activity, Lightbulb, Power, Wifi, WifiOff, User, Snowflake, Loader2,
   Info, Clock, Zap, ToggleLeft, AlertTriangle, X,
 } from 'lucide-react';
+import { XacThucPanel, NhatKyPanel } from './Blockchain';
 
 const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:3001';
 const WS_URL = import.meta.env.VITE_WS_URL || 'ws://localhost:8082';
@@ -216,6 +217,10 @@ export default function App() {
             <RelayControl relay={relay} onToggle={handleToggleRelay} />
 
             <ChartCard data={chartData} range={chartRange} onRangeChange={setChartRange} />
+
+            <XacThucPanel />
+
+            <NhatKyPanel />
           </div>
 
           <NotesPanel />
