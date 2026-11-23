@@ -1,0 +1,19 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: kho-lanh-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root_dev
+      MYSQL_DATABASE: kho_lanh
+      MYSQL_USER: kholanh
+      MYSQL_PASSWORD: kholanh_dev
+      TZ: Asia/Ho_Chi_Minh
+    ports:
+      - "127.0.0.1:3307:3306"
+    volumes:
+      - kho_lanh_data:/var/lib/mysql
+      - ./backend/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+
+volumes:
+  kho_lanh_data:
